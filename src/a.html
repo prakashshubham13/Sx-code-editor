@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+  <input type="text" id="name" onkeyup="fun()">
+  <input type="button" value="submit" >
+
+    <p id="demo"></p>
+</body>
+<script>
+function fun()
+{
+    var regx=/^[0-9]{7}@kiit.ac.in$/;
+
+var x=document.getElementById("name").value;
+// var len=x.length;
+if(regx.test(x))
+document.getElementById("name").style.borderColor = "green";
+else
+document.getElementById("name").style.borderColor = "red";
+// document.getElementById("demo").innerHTML=len;
+}
+</script>
+</html>

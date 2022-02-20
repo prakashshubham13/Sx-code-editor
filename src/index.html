@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
+
+    <style>
+        .header{
+
+height: 6%;
+    z-index: 100;
+    width: 100%;
+    background-color: rgb(41, 41, 41);
+    -webkit-app-region: drag;
+    overflow: hidden;
+    
+    display:flex;
+    margin: auto;
+    justify-content: space-between;
+ 
+
+}
+html,body { margin:0; padding:0; height:100%; width:100%; box-sizing: border-box;
+overflow: hidden;
+background-color: #3cb1ff;
+background-color: black;}
+
+#editor {
+    height: 100%;
+    width:50%;
+    display:inline-block;
+ 
+}
+::-webkit-scrollbar {
+  width: 0.8em;
+  display: none;
+}
+ 
+::-webkit-scrollbar-track {
+  box-shadow: inset 0 0 2px rgba(166, 255, 1, 0.3);
+}
+ 
+::-webkit-scrollbar-thumb {
+  background-color: rgb(255, 22, 61);
+  /* outline: 1px solid slategrey; */
+  border-radius:5px ;
+}
+#container {
+
+
+height: 90%;
+	width:auto;
+    margin: 0%;
+    margin-top: 0%;
+  white-space : nowrap; 
+  overflow : hidden;
+  position:relative;
+  border: 5px solid #3cb1ff;
+  border: 5px solid rgb(53, 53, 53);
+  
+  overflow: auto;
+}
+
+#iframe {
+	height:100%;
+	display:inline-block;
+	width:50%;
+  background-color: whitesmoke;
+}
+@media only screen and (max-width: 600px) {
+    #editor {
+    height: 50%;
+    width:100%;
+    display:block;
+}
+#iframe {
+	height:50%;
+	display:block;
+	width:100%;
+}
+}
+
+.menu button{
+
+margin: 5px;
+
+cursor: pointer;
+-webkit-app-region: no-drag;
+}
+.menu button:hover{
+
+box-shadow: inset 0px 5px 5px white;
+}
+
+.menu
+{
+  margin-top: auto;
+}
+/* disable tag matching */
+/* .ace_editor .ace_marker-layer .ace_bracket { display: none } */
+
+    </style>
+</head>
+<body>
+    <div class="header">
+      
+        <p style="text-align: center;color:grey;margin-left: 5px;margin-top: 0;">  <span><img src="./2.png" style="width:50px;height:30px;" alt="logo"> </span> SX CODE EDITOR</p>
+<div class="menu">
+  <button id="btnhide" style="background-color: transparent;outline: none;border: none; color: rgb(45, 143, 255);font-size: 20px;">&#128469;</button>
+
+  <button id="btnmaximize" style="background-color: transparent;outline: none;border: none; color: rgb(45, 143, 255);font-size: 20px;">&#128471;</button>
+
+  <button id="btnclose" style="background-color: transparent;outline: none;border: none; color: crimson;font-size: 20px;">&#128473;</button>
+
+  <!-- <i class="fa fa-window-minimize" aria-hidden="true"  style="color: rgb(45, 143, 255);font-size: 30px;" id="btnhide"></i>
+  <i class="fa fa-window-maximize" aria-hidden="true" style="color: rgb(45, 143, 255);font-size: 30px;" id="btnmaximize"></i>
+  
+  <i class="fas fa-window-close" style="color: red;font-size: 30px;" id="btnclose"></i> -->
+
+</div>
+   
+        </div>
+     
+    
+    <div id='container'>
+
+        <div id="editor">
+        </div>
+      
+        <iframe id='iframe' frameBorder="0">
+        </iframe>
+      </div>
+     
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/ace/1.4.12/ace.js" integrity="sha512-GZ1RIgZaSc8rnco/8CXfRdCpDxRCphenIiZ2ztLy3XQfCbQUSCuk8IudvNHxkRA3oUg6q0qejgN/qqyG1duv5Q==" crossorigin="anonymous"></script>
+
+<script>
+
+    var h=`<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>This is a heading...</h1>
+    <p>Thiis a paragraph...</p>
+</body>
+</html>`
+    h = h.replace(/&lt;/g, "<");
+      h = h.replace(/&gt;/g, ">");
+    function update()
+{
+	var idoc = document.getElementById('iframe').contentWindow.document;
+
+	idoc.open();
+	idoc.write(editor.getValue());
+	idoc.close();
+}
+
+function setupEditor()
+{
+  window.editor = ace.edit("editor");
+  editor.setTheme("ace/theme/monokai");
+  editor.getSession().setMode("ace/mode/html");
+  editor.setValue(h,1); //1 = moves cursor to end
+
+  editor.getSession().on('change', function() {
+    update();
+  });
+
+  editor.focus();
+  
+  
+  editor.setOptions({
+    fontSize: "12pt",
+    showLineNumbers: true,
+    showGutter: true,
+    vScrollBarAlwaysVisible:true,
+    enableBasicAutocompletion: true, enableLiveAutocompletion: true
+  });
+
+  editor.setShowPrintMargin(true);
+  editor.setBehavioursEnabled(true);
+}
+
+setupEditor();
+update();
+  
+</script>
+<script>
+ 
+
+    console.log("hello");    console.log("hello");    console.log("hello");
+    function myFunction(){
+
+   
+console.log("jhj");
+
+}
+</script>
+<script>
+  require("./index.js");
+
+</script>
+</body>   
+</html>
